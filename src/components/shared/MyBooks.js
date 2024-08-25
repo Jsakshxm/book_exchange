@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,6 +8,7 @@ import { Separator } from "@/components/ui/separator";
 
 export function MyBooks() {
   const [searchTerm, setSearchTerm] = useState("");
+  const user = useSelector((state) => state.user.user.user);
 
   // Dummy book data (replace with actual user data)
   const books = [

@@ -4,13 +4,20 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import PostBookForm from "./PostBook";
-import MyBook from "./Mybook";
+import { MyBooks } from "./MyBooks";
 import BrowseBook from "./BrowseBook";
 import Request from "./Request";
-import MatchmakingPreferences from "./MatchMaking"; // Import the matchmaking component
+import MatchmakingPreferences from "./MatchMaking";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 export default function DashboardLayout() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("post");
+  const user=useSelector((state)=>state.user.user);
+  if (!user) {
+    router.push("/");
+  }
 
   return (
     <div className="flex h-screen">
@@ -56,7 +63,7 @@ export default function DashboardLayout() {
       <main className="flex-1 p-8 bg-gray-100">
         {/* Render Content Based on Active Tab */}
         {activeTab === "post" && <PostBookForm />}
-        {activeTab === "mybooks" && <MyBook />}
+        {activeTab === "mybooks" && <MyBooks />}
         {activeTab === "browse" && <BrowseBook />}
         {activeTab === "requests" && <Request />}
         {activeTab === "matchmaking" && <MatchmakingPreferences />} {/* New Matchmaking tab */}

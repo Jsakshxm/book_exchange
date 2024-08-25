@@ -7,6 +7,8 @@ import { Label } from '../ui/label';
 import  {supabase} from '@/utils/supabase';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { setuser } from '@/utils/userSlice';
 
 export default function Auth() {
     const router = useRouter();
@@ -15,14 +17,17 @@ export default function Auth() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [authType, setAuthType] = useState('login');
+  const dispatch = useDispatch()
 
   const handleAuth = async () => {
     setLoading(true);
 
     if (authType === 'login') {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      const { data:user,error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) toast.error(error.message);
       else {toast.success('Logged in successfully');
+          console.log(user)
+          dispatch(setuser(user))
         router.push('/dashboard');
     }
     } else {
