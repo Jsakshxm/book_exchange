@@ -1,7 +1,8 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation"; 
-import {toast} from "react-toastify"; 
+import {toast} from "react-toastify";
+import { supabase } from "@/utils/supabase"; 
 export function LogoutButton() {
   const router = useRouter();
 
