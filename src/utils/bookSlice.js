@@ -4,17 +4,20 @@ const bookSlice = createSlice({
   name: "book",
   initialState: {
     books: [],
+    AllBooks: [],
   },
   reducers: {
     SetBooks: (state, action) => {
-      state.books = action.payload; // Replace books with fetched data
+      state.books = action.payload; 
     },
     RemoveBook: (state, action) => {
       state.books = state.books.filter((book) => book.id !== action.payload);
     },
-    // You can add SetBook here for adding individual books if needed
+    getAllBooks: (state, action) => {
+      state.AllBooks = action.payload; 
+    },
   },
 });
 
-export const { SetBooks, RemoveBook } = bookSlice.actions;
+export const { SetBooks, RemoveBook, getAllBooks } = bookSlice.actions;
 export default bookSlice.reducer;
