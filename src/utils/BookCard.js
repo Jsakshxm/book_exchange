@@ -1,8 +1,10 @@
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { handleDelete } from "@/utils/handleDelete";
+import { useDeleteBook } from "@/utils/handleDelete";
 
 export function BookCard({ book, setEditingBook }) {
+  const { handleDelete } = useDeleteBook(); // Extract the delete function from the custom hook
+
   return (
     <Card className="w-full">
       <CardHeader>

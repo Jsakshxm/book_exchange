@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { CardGrid } from "./CardGrid";
 import { SearchBar } from "./SearchBar";
 import EditBook from "./EditBooks"; 
-
+import { RemoveBook } from "@/utils/bookSlice";
 import { SetBooks } from "@/utils/bookSlice";
 import { fetchBooks } from "@/utils/fetchBooks";
 
