@@ -117,7 +117,7 @@ export function BrowseBooks() {
       }
     } catch (err) {
       console.error("Error sending request:", err);
-      toast.error("Something went wrong!");
+
     }
   };
 
