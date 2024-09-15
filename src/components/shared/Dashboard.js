@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import { setuser } from "@/utils/userSlice"; 
 import { Button } from "@/components/ui/button"; 
 import { FiMenu } from "react-icons/fi"; // For the menu icon
-
+import RecommendedBooks from "./aiRecommend";
 export default function DashboardLayout() {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export default function DashboardLayout() {
 
   return (
     <div className="flex h-screen overflow-hidden">
-      {/* Mobile Header */}
+
       <header className="fixed top-0 left-0 right-0 z-10 flex items-center justify-between px-4 py-4 text-white bg-gray-900 md:hidden">
         <h2 className="text-xl font-bold">Book Exchange</h2>
         <button
@@ -92,6 +92,13 @@ export default function DashboardLayout() {
             >
               Matchmaking
             </Button>
+            <Button
+              variant={activeTab === "recommended" ? "default" : "ghost"}
+              className="justify-start w-full"
+              onClick={() => setActiveTab("recommended")}
+            >
+              Recommended Books
+            </Button>
           </nav>
         </div>
 
@@ -115,6 +122,7 @@ export default function DashboardLayout() {
         {activeTab === "browse" && <BrowseBooks />}
         {activeTab === "requests" && <Request />}
         {activeTab === "matchmaking" && <MatchmakingPreferences />}
+        {activeTab === "recommended" && <RecommendedBooks />}
       </main>
     </div>
   );
